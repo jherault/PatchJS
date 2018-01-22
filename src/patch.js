@@ -1,6 +1,6 @@
 export default class Patch {
     static observe(o, typeChecking = true) {
-        let copy = {...o};
+        let copy = JSON.parse(JSON.stringify(o));
         let typeofO = typeof o;
         if (typeofO !== "object") throw new Error(`Cannot operate on a non-object. Given type: ${typeofO}`);
 
@@ -25,7 +25,7 @@ export default class Patch {
                 }
             });
         copy.get = () => {
-            let clone = {...copy};
+            let clone = JSON.parse(JSON.stringify(copy));
             delete clone.get;
             delete clone.revert;
             delete clone.patchInfos;

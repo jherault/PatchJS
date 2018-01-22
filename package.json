@@ -4,7 +4,8 @@
   "description": "A light library to manage PATCH of an object by saving state changes.",
   "main": "patch.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "compile": "babel --presets es2015 -d dist/ src/",
+    "test": "npm run compile && mocha --compilers js:babel-core/register test/patch.test.js "
   },
   "keywords": [
     "Patch",
@@ -12,5 +13,19 @@
     "proxy"
   ],
   "author": "J.Herault",
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/jherault/PatchJS/issues"
+  },
+  "homepage": "https://github.com/jherault/PatchJS#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jherault/PatchJS.git"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "mocha": "^5.0.0"
+  }
 }

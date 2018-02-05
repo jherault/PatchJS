@@ -17,11 +17,12 @@ export default class Patch {
                     if (this.typeChecking && oldValue !== undefined) {
                         let typeofValue = typeof value;
                         let typeofOldValue = typeof oldValue;
-                        if (typeOfValue !== typeofOldValue)
+                        if (typeofValue !== typeofOldValue)
                             throw new Error(`Type mismatch: trying to set ${name} with <${typeofValue}> instead of <${typeofOldValue}>`);
                     }
                     copy.patchInfos[name] = {original: oldValue, current: value};
                     target[name] = value;
+                    return true;
                 }
             });
         copy.get = () => {

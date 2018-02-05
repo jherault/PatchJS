@@ -11,7 +11,8 @@
     "clean": "rm -rf dist",
     "prebuild": "npm run clean && npm run init",
     "build": "babel ./src/ -d ./dist/ --presets es2015",
-    "test": "mocha --compilers js:babel-core/register test/patch.test.js "
+    "test": "mocha --compilers js:babel-core/register test/patch.test.js ",
+    "prepublish": "npm run build"
   },
   "keywords": [
     "Patch",

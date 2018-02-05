@@ -1,4 +1,13 @@
+/**
+ * Class allowing the "recording" of changes to generate a patch version of an object for a backend using the PATCH HTTP verb.
+ */
 export default class PatchJS {
+    /**
+     * Function used to observe assignment on a given object. 
+     * @param {object} o the object to proxy.
+     * @param {boolean} typeChecking boolean for type checking. Default true. If a type change by assignment and set to true, an error accurs with orignal type and given type.
+     * throws Error if first argument is not an object.
+     */
     static observe(o, typeChecking = true) {
         let copy = JSON.parse(JSON.stringify(o));
         let typeofO = typeof o;
@@ -25,6 +34,9 @@ export default class PatchJS {
                     return true;
                 }
             });
+        /**
+         * Retrieve the datas as plain object
+         */
         copy.get = () => {
             let clone = JSON.parse(JSON.stringify(copy));
             delete clone.get;
@@ -33,6 +45,9 @@ export default class PatchJS {
             delete clone.patch;
             return clone;
         };
+        /**
+         * Revert all changes to original
+         */
         copy.revert = () => {
             Object.keys(proxy.patchInfos).forEach(key => {
                 let originalValue = proxy.patchInfos[key].original;
@@ -42,6 +57,9 @@ export default class PatchJS {
             copy.patchInfos = {};
             return proxy;
         };
+        /**
+         * Generate the patch object
+         */
         copy.patch = () => {
             let patch = {};
             Object.keys(copy.patchInfos).forEach(key => {

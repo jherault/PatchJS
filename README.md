@@ -39,6 +39,11 @@ fetch('anUrl', {
 ```
 
 ----------
+### Note
+PatchJS.observe takes an object and an optional boolean ```typeChecking``` (default true) that prevent type change by assignment. If your types are dynamic, set this boolean to false.
+```javascript
+let o = PatchJS.observe({}, false);
+```
 
 ### TODO
 what about arrays... if an item is pushed/poped/updated...

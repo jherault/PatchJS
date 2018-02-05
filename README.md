@@ -8,7 +8,7 @@ You use a REST API, the PATCH HTTP verb, but you always send the full data? mayb
 ## Installation
 
 ```
-npm install --save patchjs
+npm install --save @jherault/patchjs
 ```
 
 ## Usage

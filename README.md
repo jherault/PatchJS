@@ -11,6 +11,10 @@ You use a REST API, the PATCH HTTP verb, but you always send the full data? mayb
 npm install --save @jherault/patchjs
 ```
 
+## Repo
+
+[Github](https://github.com/jherault/PatchJS)
+
 ## Usage
 
 ```javascript

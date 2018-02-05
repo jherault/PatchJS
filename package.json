@@ -3,17 +3,22 @@
   "version": "1.0.0",
   "description": "A light library to manage PATCH of an object by saving state changes.",
   "main": "dist/patch.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "build": "babel --presets es2015 -d dist/ src/",
-    "test": "npm run compile && mocha --compilers js:babel-core/register test/patch.test.js ",
-    "prepublish": "npm run build"
+    "init": "mkdir dist",
+    "clean": "rm -rf dist",
+    "prebuild": "npm run clean && npm run init",
+    "build": "babel ./src/ -d ./dist/ --presets es2015",
+    "test": "mocha --compilers js:babel-core/register test/patch.test.js "
   },
   "keywords": [
     "Patch",
     "es6",
     "proxy"
   ],
-  "author": "J.Herault",
+  "author": "J.Herault <jeremy.herault+pacthjs@gmail.com>",
   "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/jherault/PatchJS/issues"

@@ -1,4 +1,4 @@
-export default class Patch {
+export default class PatchJS {
     static observe(o, typeChecking = true) {
         let copy = JSON.parse(JSON.stringify(o));
         let typeofO = typeof o;

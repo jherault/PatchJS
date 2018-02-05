@@ -1,11 +1,12 @@
 {
-  "name": "patch",
+  "name": "patchjs",
   "version": "1.0.0",
   "description": "A light library to manage PATCH of an object by saving state changes.",
-  "main": "patch.js",
+  "main": "dist/patch.js",
   "scripts": {
-    "compile": "babel --presets es2015 -d dist/ src/",
-    "test": "npm run compile && mocha --compilers js:babel-core/register test/patch.test.js "
+    "build": "babel --presets es2015 -d dist/ src/",
+    "test": "npm run compile && mocha --compilers js:babel-core/register test/patch.test.js ",
+    "prepublish": "npm run build"
   },
   "keywords": [
     "Patch",
@@ -27,5 +28,8 @@
     "babel-core": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "mocha": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=6.10.0"
   }
 }

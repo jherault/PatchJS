@@ -1,5 +1,5 @@
 {
-  "name": "patchjs",
+  "name": "@jherault/patchjs",
   "version": "1.0.0",
   "description": "A light library to manage PATCH of an object by saving state changes.",
   "main": "dist/patch.js",

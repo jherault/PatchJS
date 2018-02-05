@@ -15,7 +15,7 @@ npm install --save patchjs
 
 ```javascript
 
-import PatchJS from 'patchjs';
+import PatchJS from '@jherault/patchjs';
 
 //...
 

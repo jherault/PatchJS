@@ -5,7 +5,8 @@ export default class PatchJS {
     /**
      * Function used to observe assignment on a given object. 
      * @param {object} o the object to proxy.
-     * @param {boolean} typeChecking boolean for type checking. Default true. If a type change by assignment and set to true, an error accurs with orignal type and given type.
+     * @param {boolean} typeChecking boolean for type checking. Default true. If a type change by assignment and setted to true, an error accurs with orignal type and given type.
+     * @returns The proxied object with new functions (get, revert, patch) and the 'patchInfos' member with differences (original and current value for a given key).
      * throws Error if first argument is not an object.
      */
     static observe(o, typeChecking = true) {

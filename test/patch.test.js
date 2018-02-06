@@ -38,12 +38,12 @@ describe('PatchJS', function() {
 
 describe('PatchJS', function() {
   describe('#observe()', function() {
-    describe('.patchInfos', function() {
+    describe('patchInfos()', function() {
       it('should return an object with only changes with original and current values', function() {
         let o = {a: 5, b: "aString", c: {d: null}};
         let oPrime = PatchJS.observe(o);
         oPrime.a = 10;
-        assert.equal(JSON.stringify({a: {original: 5, current: 10}}), JSON.stringify(oPrime.patchInfos));
+        assert.equal(JSON.stringify({a: {original: 5, current: 10}}), JSON.stringify(oPrime.patchInfos()));
       });
     });
   });

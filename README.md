@@ -46,7 +46,7 @@ fetch('anUrl', {
 let unproxiedObject = myObjectWithPatchOption.get();
 
 //look for changes
-console.log(myObjectWithPatchOption.patchInfos); // --> {a: {original: 0, current: 15}, c: {original: null, current: {d: 10}}}
+console.log(myObjectWithPatchOption.patchInfos()); // --> {a: {original: 0, current: 15}, c: {original: null, current: {d: 10}}}
 
 //revert changes to original values
 myObjectWithPatchOption = myObjectWithPatchOption.revert();

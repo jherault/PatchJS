@@ -1,6 +1,6 @@
 
 # PatchJS
-A light library (a single class) to manage [JSON merge PATCH](https://tools.ietf.org/html/rfc7386) of an object by saving state changes.
+A lite library (a single class) to manage [JSON merge PATCH](https://tools.ietf.org/html/rfc7386) of an object by saving state changes.
 
 
 You use a REST API, the PATCH HTTP verb, but you always send the full data? maybe you would like to send only the changes?

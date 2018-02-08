@@ -1,6 +1,6 @@
 
 # PatchJS
-A light library (a single class) to manage PATCH of an object by saving state changes.
+A light library (a single class) to manage [JSON merge PATCH](https://tools.ietf.org/html/rfc7386) of an object by saving state changes.
 
 
 You use a REST API, the PATCH HTTP verb, but you always send the full data? maybe you would like to send only the changes?
@@ -31,22 +31,21 @@ let myObjectWithPatchOption = PatchJS.observe(myObject); //yes the name of this 
 myObjectWithPatchOption.a = 15;
 myObjectWithPatchOption.c = {d: 10};
 
-//and send a patch to the backend
+//and send a JSON merge patch to the backend
 let headers = new Headers();
-headers.append('Content-Type', 'application/json; charset=UTF-8');
-headers.append('Accept', 'application/json');
+headers.append('Content-Type', 'application/merge-patch+json; charset=UTF-8'); //or 'applciation/json' if you prefer but 'merge-patch+json' is the right subtype 
 
 fetch('anUrl', { 
     method: 'PATCH', 
     headers: headers, 
-    body: JSON.stringify(myObjectWithPatchOption.patch()) // --> {"a":15,"c":{"d":10}}
+    body: JSON.stringify(myObjectWithPatchOption.mergePatch()) // --> {"a":15,"c":{"d":10}}
     }).then(...);
 
 //get unproxied object with changes
 let unproxiedObject = myObjectWithPatchOption.get();
 
 //look for changes
-console.log(myObjectWithPatchOption.patchInfos()); // --> {a: {original: 0, current: 15}, c: {original: null, current: {d: 10}}}
+console.log(myObjectWithPatchOption.mergeInfos()); // --> {a: {original: 0, current: 15}, c: {original: null, current: {d: 10}}}
 
 //revert changes to original values
 myObjectWithPatchOption = myObjectWithPatchOption.revert();

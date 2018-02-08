@@ -17,7 +17,7 @@ describe('PatchJS', function() {
       it('should return a structured and valued object as the original', function() {
         let o = {a: 5, b: "aString", c: {d: null}};
         let oPrime = PatchJS.observe(o);
-        assert.equal(JSON.stringify(o), JSON.stringify(oPrime));
+        assert.equal(JSON.stringify(o), JSON.stringify(oPrime.get()));
       });
     });
   });
@@ -38,12 +38,12 @@ describe('PatchJS', function() {
 
 describe('PatchJS', function() {
   describe('#observe()', function() {
-    describe('patchInfos()', function() {
-      it('should return an object with only changes with original and current values', function() {
+    describe('#mergePatch()', function() {
+      it('should return an object with only the diff (key with current value)', function() {
         let o = {a: 5, b: "aString", c: {d: null}};
         let oPrime = PatchJS.observe(o);
         oPrime.a = 10;
-        assert.equal(JSON.stringify({a: {original: 5, current: 10}}), JSON.stringify(oPrime.patchInfos()));
+        assert.equal(JSON.stringify({a: 10}), JSON.stringify(oPrime.mergePatch()));
       });
     });
   });
@@ -51,13 +51,14 @@ describe('PatchJS', function() {
 
 describe('PatchJS', function() {
   describe('#observe()', function() {
-    describe('#patch()', function() {
-      it('should return an object with only the diff (key with current value)', function() {
+    describe('mergeInfos()', function() {
+      it('should return an object with only changes with original and current values', function() {
         let o = {a: 5, b: "aString", c: {d: null}};
         let oPrime = PatchJS.observe(o);
         oPrime.a = 10;
-        assert.equal(JSON.stringify({a: 10}), JSON.stringify(oPrime.patch()));
+        assert.equal(JSON.stringify({a: {original: 5, current: 10}}), JSON.stringify(oPrime.mergeInfos()));
       });
     });
   });
 });
+

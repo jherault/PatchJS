@@ -10,6 +10,14 @@ describe('PatchJS', function() {
   });
 });
 
+describe('PatchJS', function() {
+  describe('#observe()', function() {
+    it('should throw an error if the first argument is already observed by PatchJS', function() {
+      let o = () => {};
+      assert.throws(() => PatchJS.observe(PatchJS.observe(o)), Error, "Cannot operate on an already observed object by PatchJS.");
+    });
+  });
+});
 
 describe('PatchJS', function() {
   describe('#observe()', function() {
